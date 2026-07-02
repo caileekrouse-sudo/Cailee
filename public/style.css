@@ -15,6 +15,10 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: var(--bg);
@@ -72,6 +76,43 @@ body {
   padding: 1.75rem;
 }
 
+@media (max-width: 600px) {
+  .app {
+    padding: 1.25rem 0.9rem 3rem;
+  }
+
+  .app-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .app-header h1 {
+    font-size: 2rem;
+  }
+
+  .tagline {
+    font-size: 0.8rem;
+  }
+
+  .app-main {
+    gap: 1.1rem;
+  }
+
+  .input-panel,
+  .output-panel {
+    padding: 1.1rem;
+    border-radius: 12px;
+  }
+
+  .output-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .formula-output {
+    padding: 1.1rem;
+    font-size: 0.83rem;
+  }
+}
+
 .input-panel label {
   display: block;
   font-weight: 600;
@@ -90,13 +131,29 @@ textarea,
 select {
   width: 100%;
   font-family: inherit;
-  font-size: 0.95rem;
+  /* 16px minimum keeps iOS Safari from auto-zooming the page on focus */
+  font-size: 16px;
   padding: 0.7rem 0.8rem;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: #fffdfb;
   color: var(--ink);
   resize: vertical;
+}
+
+textarea {
+  min-height: 9rem;
+}
+
+select {
+  min-height: 3rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%236b5f56'><path d='M5.5 7.5l4.5 5 4.5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 1.1rem;
+  padding-right: 2.2rem;
 }
 
 textarea:focus,
@@ -108,15 +165,17 @@ select:focus {
 #generate-btn {
   margin-top: 1.4rem;
   width: 100%;
+  min-height: 3rem;
   padding: 0.85rem 1rem;
   background: var(--accent);
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #generate-btn:hover:not(:disabled) {
@@ -139,6 +198,8 @@ select:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem;
   margin-bottom: 1rem;
 }
 
@@ -156,13 +217,15 @@ select:focus {
 }
 
 .output-actions button {
-  padding: 0.4rem 0.9rem;
-  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  min-height: 2.5rem;
+  font-size: 0.9rem;
   border: 1px solid var(--border);
   background: #fff;
   color: var(--ink);
   border-radius: 6px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .output-actions button:hover {
@@ -185,6 +248,7 @@ select:focus {
   font-size: 0.88rem;
   line-height: 1.55;
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
   overflow-x: auto;
 }
 
