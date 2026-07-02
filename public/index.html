@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cailee — Formula Card Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>Cailee</h1>
+      <p class="tagline">AI formula card assistant &middot; Redken &amp; Goldwell</p>
+    </header>
+
+    <main class="app-main">
+      <section class="input-panel">
+        <label for="scenario">Client scenario</label>
+        <textarea
+          id="scenario"
+          placeholder="e.g. Regular client, level 6 natural base, 30% gray, wants to go to a warm level 8 balayage. Last colored 10 weeks ago with box dye at home, roots are virgin. No known allergies. Hair is in good condition, fine texture."
+          rows="8"
+        ></textarea>
+
+        <label for="line">Line preference</label>
+        <select id="line">
+          <option value="auto">No preference — let it choose</option>
+          <option value="Redken">Redken</option>
+          <option value="Goldwell">Goldwell</option>
+        </select>
+
+        <button id="generate-btn" type="button">Generate Formula Card</button>
+        <p id="error-message" class="error-message" hidden></p>
+      </section>
+
+      <section class="output-panel">
+        <div class="output-header">
+          <h2>Formula Card</h2>
+          <div class="output-actions" id="output-actions" hidden>
+            <button id="copy-btn" type="button">Copy</button>
+            <button id="print-btn" type="button">Print</button>
+          </div>
+        </div>
+        <div id="loading" class="loading" hidden>
+          <div class="spinner"></div>
+          <p>Building the formula&hellip;</p>
+        </div>
+        <pre id="formula-output" class="formula-output" hidden></pre>
+        <p id="placeholder" class="placeholder">Describe a client scenario and generate a card to see it here.</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
